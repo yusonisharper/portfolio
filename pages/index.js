@@ -12,6 +12,7 @@ import Link from "next/link";
 import Cursor from "../components/Cursor";
 import { useRouter } from 'next/router';
 import { useTheme } from "next-themes";
+import { useEffect } from 'react';
 
 // Local Data
 import data from "../data/portfolio.json";
@@ -40,6 +41,10 @@ export default function Home() {
       behavior: "smooth",
     });
   };
+  const { setTheme } = useTheme();
+  useEffect(() => {
+    setTheme('light'); // Set the theme to dark
+  }, [setTheme]); // Dependency array includes setTheme to avoid unnecessary re-renders
 
   useIsomorphicLayoutEffect(() => {
     stagger(
