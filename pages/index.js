@@ -1,15 +1,17 @@
 import { useRef } from "react";
+import { useIsomorphicLayoutEffect } from "../utils";
+import { stagger } from "../animations";
 import Header from "../components/Header";
 import SkillCardList from "../components/SkillCard";
 import Socials from "../components/Socials";
 import WorkCardList from "../components/WorkCard";
-import { useIsomorphicLayoutEffect } from "../utils";
-import { stagger } from "../animations";
 import Footer from "../components/Footer";
 import Head from "next/head";
 import Button from "../components/Button";
 import Link from "next/link";
 import Cursor from "../components/Cursor";
+import { useRouter } from 'next/router';
+import { useTheme } from "next-themes";
 
 // Local Data
 import data from "../data/portfolio.json";
@@ -17,6 +19,7 @@ import ExperienceCardList from "../components/ExperienceCard";
 import EducationCardList from "../components/EducationCard";
 
 export default function Home() {
+  const { basePath } = useRouter();
   // Ref
   const homeRef = useRef();
   const workRef = useRef(); //project
@@ -30,49 +33,9 @@ export default function Home() {
   const textFour = useRef();
 
   // Handling Scroll
-  const handleHomeScroll = () => {
+  const handleScroll = (ref) => {
     window.scrollTo({
-      top: homeRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleWorkScroll = () => {
-    window.scrollTo({
-      top: workRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleSkillScroll = () => {
-    window.scrollTo({
-      top: skillRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleExpScroll = () => {
-    window.scrollTo({
-      top: expRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleEduScroll = () => {
-    window.scrollTo({
-      top: eduRef.current.offsetTop,
-      left: 0,
-      behavior: "smooth",
-    });
-  };
-
-  const handleAboutScroll = () => {
-    window.scrollTo({
-      top: aboutRef.current.offsetTop,
+      top: ref.current.offsetTop,
       left: 0,
       behavior: "smooth",
     });
@@ -98,12 +61,12 @@ export default function Home() {
 
       <div className="container mx-auto mb-10">
         <Header
-          handleHomeScroll={handleHomeScroll}
-          handleWorkScroll={handleWorkScroll}
-          handleSkillScroll={handleSkillScroll}
-          handleExpScroll={handleExpScroll}
-          handleEduScroll={handleEduScroll}
-          handleAboutScroll={handleAboutScroll}
+          handleHomeScroll={() => handleScroll(homeRef)}
+          handleWorkScroll={() => handleScroll(workRef)}
+          handleSkillScroll={() => handleScroll(skillRef)}
+          handleExpScroll={() => handleScroll(expRef)}
+          handleEduScroll={() => handleScroll(eduRef)}
+          handleAboutScroll={() => handleScroll(aboutRef)}
         />
         <div className="laptop:mt-20 mt-10">
           <div className="mt-5">
@@ -146,17 +109,19 @@ export default function Home() {
           <h1 className="text-2xl text-bold">Experiences</h1>
           <ExperienceCardList className="m-5 laptop:mt-10 grid grid-cols-1 gap-4" />
         </div>
-        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0 flex items-center justify-center" ref={eduRef}>  
+        <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={eduRef}>
           <h1 className="text-2xl text-bold">Educations</h1>
-          <EducationCardList className="m-5 w-2/5 laptop:mt-10 grid grid-cols-1 gap-4" />
+          <div className="flex items-center justify-center">
+            <EducationCardList className="m-5 w-full laptop:w-3/5 laptop:mt-10 grid gap-4" />
+          </div>
         </div>
         <div className="mt-10 laptop:mt-40 p-2 laptop:p-0" ref={aboutRef}>
           <h1 className="tablet:m-10 text-2xl text-bold">About</h1>
           <p className="tablet:m-10 mt-2 text-xl laptop:text-3xl w-full laptop:w-3/5">
-            {data.aboutpara} <Button type="primary" onClick={() => window.open("/Yusheng-Wang-resume.pdf")} >Resume</Button>
+            {data.aboutpara} <Button type="primary" onClick={() => window.open(`${basePath}/Yusheng-Wang-resume.pdf`)} >Resume</Button>
           </p>
         </div>
-        <Footer />
+        <Footer className=""/>
         {/* This button should not go into production */}
         {process.env.NODE_ENV === "development" && (
           <div className="fixed bottom-5 right-5">

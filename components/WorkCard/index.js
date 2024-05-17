@@ -1,6 +1,7 @@
 import React from "react";
 import { useTheme } from "next-themes";
 import data from "../../data/portfolio.json";
+import { useRouter } from 'next/router';
 
 const ToolList = ({tool, className }) => {
   const { theme } = useTheme();
@@ -16,9 +17,11 @@ const ToolList = ({tool, className }) => {
 };
 
 const WorkCard = ({ img, name, description, onClick, tool }) => {
+  const { basePath } = useRouter();
+  const { theme } = useTheme();
   return (
     <div
-      className="overflow-hidden rounded-lg p-2 laptop:p-4 first:ml-0 link"
+      className={`overflow-hidden rounded-lg p-2 laptop:p-4 first:ml-0 link ${theme === "dark" ? "hover:bg-slate-800" : "hover:bg-slate-50"}`}
     >
       <div
         className="relative rounded-lg overflow-hidden transition-all ease-out duration-300 h-48 mob:h-auto"
@@ -26,8 +29,8 @@ const WorkCard = ({ img, name, description, onClick, tool }) => {
       >
         <img
           alt={name}
-          className="h-full w-full object-cover hover:scale-110 transition-all ease-out duration-300"
-          src={img}
+          className="h-full w-full object-contain hover:scale-110 transition-all ease-out duration-300"
+          src={`${basePath + img}`}
           onClick={onClick}
         ></img>
       </div>
@@ -37,7 +40,7 @@ const WorkCard = ({ img, name, description, onClick, tool }) => {
         </h1>
         <ToolList tool={tool} className=""/>
       </>
-      <h2 className="text-xl opacity-50">
+      <h2 className="text-xl opacity-50 mt-2">
         {description ? description : "Description"}
       </h2>
     </div>

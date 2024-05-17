@@ -13,6 +13,8 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
 
   const { name, showBlog, showResume } = data;
 
+  const { basePath } = useRouter();
+
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -31,7 +33,7 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
               </h1>
 
               <div className="flex items-center">
-                {data.darkMode && (
+                {(
                   <Button
                     onClick={() =>
                       setTheme(theme === "dark" ? "light" : "dark")
@@ -39,7 +41,7 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
                   >
                     <img
                       className="h-6"
-                      src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"
+                      src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"
                         }`}
                     ></img>
                   </Button>
@@ -48,13 +50,13 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
                 <Popover.Button>
                   <img
                     className="h-5"
-                    src={`/images/${!open
-                        ? theme === "dark"
-                          ? "menu-white.svg"
-                          : "menu.svg"
-                        : theme === "light"
-                          ? "cancel.svg"
-                          : "cancel-white.svg"
+                    src={`${basePath}/images/${!open
+                      ? theme === "dark"
+                        ? "menu-white.svg"
+                        : "menu.svg"
+                      : theme === "light"
+                        ? "cancel.svg"
+                        : "cancel-white.svg"
                       }`}
                   ></img>
                 </Popover.Button>
@@ -64,10 +66,13 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
               className={`absolute right-0 z-10 w-11/12 p-4 ${theme === "dark" ? "bg-slate-800" : "bg-white"
                 } shadow-md rounded-md`}
             >
-              {/* {
+              {
                 <div className="grid grid-cols-1">
                   <Button onClick={handleHomeScroll}>Home</Button>
-                  <Button onClick={handleWorkScroll}>Work</Button>
+                  <Button onClick={handleWorkScroll}>Project</Button>
+                  <Button onClick={handleSkillScroll}>Skill</Button>
+                  <Button onClick={handleExpScroll}>Experience</Button>
+                  <Button onClick={handleEduScroll}>Education</Button>
                   <Button onClick={handleAboutScroll}>About</Button>
                   {showBlog && (
                     <Button onClick={() => router.push("/blog")}>Blog</Button>
@@ -75,7 +80,7 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
                   {showResume && (
                     <Button
                       onClick={() =>
-                        window.open("mailto:hello@chetanverma.com")
+                        window.open("mailto:yushengw720@gmail.com")
                       }
                     >
                       Resume
@@ -83,12 +88,12 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
                   )}
 
                   <Button
-                    onClick={() => window.open("mailto:hello@chetanverma.com")}
+                    onClick={() => window.open("mailto:yushengw720@gmail.com")}
                   >
                     Contact
                   </Button>
                 </div>
-              } */}
+              }
             </Popover.Panel>
           </>
         )}
@@ -123,7 +128,7 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            <Button onClick={() => window.open("mailto:yushengw720@gmail.com")}>
               Contact
             </Button>
             {mounted && theme && data.darkMode && (
@@ -132,7 +137,7 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
               >
                 <img
                   className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
                 ></img>
               </Button>
             )}
@@ -152,17 +157,17 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
               </Button>
             )}
 
-            <Button onClick={() => window.open("mailto:hello@chetanverma.com")}>
+            <Button onClick={() => window.open("mailto:yushengw720@gmail.com")}>
               Contact
             </Button>
 
-            {mounted && theme && data.darkMode && (
+            {data.darkMode && (
               <Button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               >
                 <img
                   className="h-6"
-                  src={`/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
                 ></img>
               </Button>
             )}
