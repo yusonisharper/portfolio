@@ -4,15 +4,12 @@ import data from "../../data/portfolio.json";
 
 const SkillCard = ({ name, proficiency, img }) => {
   const { theme } = useTheme();
-  const [mounted, setMounted] = useState();
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+
   return (
     <div
       className={`w-36 h-48 p-2 mob:p-4 rounded-lg transition-all ease-out duration-300 ${
-        mounted && theme === "dark" ? "hover:bg-slate-800" : "hover:bg-slate-50"
+        theme ? (theme === "dark" ? "hover:bg-slate-800" : "hover:bg-slate-50") : "hover:bg-slate-800"
       } hover:scale-105 link`}
     >
       <div className="h-32 flex items-center justify-center overflow-hidden">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useTheme } from "next-themes";
 import data from "../../data/portfolio.json";
 
 const EducationCard = ({ dates, name, para }) => {

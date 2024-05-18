@@ -8,7 +8,7 @@ const ExperienceCard = ({ dates, type, position, bullets }) => {
 
     return (
         <div className={` p-5 w-full flex mob:flex-col desktop:flex-row justify-between rounded-lg ${
-            theme === "dark" ? "hover:bg-slate-800" : "hover:bg-slate-50"}`}>
+            theme ? (theme === "dark" ? "hover:bg-slate-800" : "hover:bg-slate-50") : "hover:bg-slate-800"}`}>
             <div className="text-lg w-2/5">
                 <h2>{dates}</h2>
                 <h3 className="text-sm opacity-50">{type}</h3>

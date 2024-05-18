@@ -9,15 +9,10 @@ import data from "../../data/portfolio.json";
 const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleExpScroll, handleEduScroll, handleAboutScroll, isBlog }) => {
   const router = useRouter();
   const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
 
   const { name, showBlog, showResume } = data;
 
   const { basePath } = useRouter();
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <>
@@ -34,14 +29,14 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
 
               <div className="flex items-center">
                 {(
-                  <Button
+                  data.darkMode && <Button
                     onClick={() =>
                       setTheme(theme === "dark" ? "light" : "dark")
                     }
                   >
                     <img
                       className="h-6"
-                      src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"
+                      src={`${basePath}/images/${theme ? (theme === "dark" ? "moon.svg" : "sun.svg") : "moon.svg"
                         }`}
                     ></img>
                   </Button>
@@ -51,19 +46,19 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
                   <img
                     className="h-5"
                     src={`${basePath}/images/${!open
-                      ? theme === "dark"
+                      ? theme ? (theme === "dark"
                         ? "menu-white.svg"
-                        : "menu.svg"
-                      : theme === "light"
+                        : "menu.svg") : "menu-white.svg"
+                      : theme ? (theme === "light"
                         ? "cancel.svg"
-                        : "cancel-white.svg"
+                        : "cancel-white.svg") : "cancel.svg"
                       }`}
                   ></img>
                 </Popover.Button>
               </div>
             </div>
             <Popover.Panel
-              className={`absolute right-0 z-10 w-11/12 p-4 ${theme === "dark" ? "bg-slate-800" : "bg-white"
+              className={`absolute right-0 z-10 w-11/12 p-4 ${theme ? (theme === "dark" ? "bg-slate-800" : "bg-white") : "bg-slate-800"
                 } shadow-md rounded-md`}
             >
               {
@@ -99,7 +94,7 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
         )}
       </Popover>
       <div
-        className={`mt-10 hidden flex-row items-center justify-between sticky ${theme === "light" && "bg-white"
+        className={`mt-10 hidden flex-row items-center justify-between sticky ${theme ? (theme === "light" && "bg-white") : "light"
           } dark:text-white top-0 z-10 tablet:flex`}
       >
         <h1
@@ -131,13 +126,13 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
             <Button onClick={() => window.open("mailto:yushengw720@gmail.com")}>
               Contact
             </Button>
-            {mounted && theme && data.darkMode && (
+            {data.darkMode && (
               <Button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               >
                 <img
                   className="h-6"
-                  src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  src={`${basePath}/images/${theme ? (theme === "dark" ? "moon.svg" : "sun.svg") : "moon.svg"}`}
                 ></img>
               </Button>
             )}
@@ -167,7 +162,7 @@ const Header = ({ handleHomeScroll, handleWorkScroll, handleSkillScroll, handleE
               >
                 <img
                   className="h-6"
-                  src={`${basePath}/images/${theme === "dark" ? "moon.svg" : "sun.svg"}`}
+                  src={`${basePath}/images/${theme ? (theme === "dark" ? "moon.svg" : "sun.svg") : "moon.svg"}`}
                 ></img>
               </Button>
             )}

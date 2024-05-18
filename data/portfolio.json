@@ -6,7 +6,7 @@
     "headerTaglineFour": "making mobile App",
     "showCursor": false,
     "showBlog": false,
-    "darkMode": true,
+    "darkMode": false,
     "showResume": false,
     "socials": [
         {
@@ -52,7 +52,12 @@
                     "imageSrc": ""
                 }
             ],
-            "imageSrc": "/project1.png",
+            "media": [
+                {
+                    "type": "image",
+                    "src": "/media/project1-img1.png"
+                }
+            ],
             "url": "https://github.com/yusonisharper/odoo"
         },
         {
@@ -71,7 +76,12 @@
                     "imageSrc": ""
                 }
             ],
-            "imageSrc": "/project2.png",
+            "media": [
+                {
+                    "type": "image",
+                    "src": "/media/project2-img1.png"
+                }
+            ],
             "url": "https://github.com/yusonisharper/odoo-mobile"
         },
         {
@@ -95,7 +105,12 @@
                     "imageSrc": ""
                 }
             ],
-            "imageSrc": "/project3.png",
+            "media": [
+                {
+                    "type": "image",
+                    "src": "/media/project3-img1.png"
+                }
+            ],
             "url": "https://github.com/yusonisharper/suspects-vehicle-locate"
         },
         {
@@ -109,8 +124,100 @@
                     "imageSrc": ""
                 }
             ],
-            "imageSrc": "/project4.png",
+            "media": [
+                {
+                    "type": "image",
+                    "src": "/media/project4-img1.png"
+                }
+            ],
             "url": "https://github.com/yusonisharper/textbase-Rouguelite-RPG"
+        },
+        {
+            "title": "Sunrise And Sunset",
+            "description": "3D Artwork made with Blender and Cycles Engine",
+            "tool": [
+                {
+                    "name": "Blender",
+                    "imageSrc": ""
+                },
+                {
+                    "name": "Cycles",
+                    "imageSrc": ""
+                }
+            ],
+            "media": [
+                {
+                    "type": "video",
+                    "src": "/media/project5-video1.mp4"
+                },
+                {
+                    "type": "video",
+                    "src": "/media/project5-video2.mp4"
+                },
+                {
+                    "type": "image",
+                    "src": "/media/project5-img1.png"
+                },
+                {
+                    "type": "image",
+                    "src": "/media/project5-img2.png"
+                }
+            ],
+            "url": "https://youtu.be/jUJ5gkwITE4"
+        },
+        {
+            "title": "Lykan Hypersport",
+            "description": "3D Artwork made with Blender and Cycles Engine. Experience with object animation",
+            "tool": [
+                {
+                    "name": "Blender",
+                    "imageSrc": ""
+                },
+                {
+                    "name": "Cycles",
+                    "imageSrc": ""
+                }
+            ],
+            "media": [
+                {
+                    "type": "video",
+                    "src": "/media/project6-video1.mp4"
+                },
+                {
+                    "type": "video",
+                    "src": "/media/project6-video2.mp4"
+                },
+                {
+                    "type": "image",
+                    "src": "/media/project6-img1.png"
+                },
+                {
+                    "type": "image",
+                    "src": "/media/project6-img2.png"
+                }
+            ],
+            "url": "https://youtu.be/vZVYyG2zsyU"
+        },
+        {
+            "title": "Library",
+            "description": "Change the Cycles engine into Eevee, a real-time engine",
+            "tool": [
+                {
+                    "name": "Blender",
+                    "imageSrc": ""
+                },
+                {
+                    "name": "Eevee",
+                    "imageSrc": ""
+                }
+            ],
+            "media": [
+                {
+                    "type": "image",
+                    "src": "/media/project7-img1.png"
+                }
+            ],
+            "url": ""
         }
     ],
     "skills": [
