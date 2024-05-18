@@ -77,8 +77,8 @@ export default function Home() {
       <Head>
         <title>{data.name}</title>
       </Head>
-      <div className="gradient-circle" ref={homeRef}></div>
-      <div className="gradient-circle-bottom"></div>
+      <div className="gradient-circle" style={{ overflowX: 'hidden' }} ref={homeRef}></div>
+      <div className="gradient-circle-bottom" style={{ overflowX: 'hidden' }}></div>
 
       <div className="container mx-auto mb-10">
         <Header
@@ -89,7 +89,7 @@ export default function Home() {
           handleEduScroll={() => handleScroll(eduRef)}
           handleAboutScroll={() => handleScroll(aboutRef)}
         />
-        <div className="">
+        <div style={{ overflowX: 'hidden' }}>
           <div className="relative flex flex-col items-center laptop:min-h-screen py-2">
             <div id="canvas" ref={canvasRef}></div>
             <div className="laptop:mt-20 mt-10 absolute top-0 left-0 w-full mt-5">
@@ -127,7 +127,7 @@ export default function Home() {
         </div>
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={skillRef}>
           <h1 className="tablet:m-10 text-2xl text-bold">Skills</h1>
-          <SkillCardList className="mt-5 tablet:m-10 grid grid-cols-4 laptop:grid-cols-6 gap-8" />
+          <SkillCardList className="mt-5 tablet:m-10 grid grid-cols-2 tablet:grid-cols-4 laptop:grid-cols-6 gap-8" />
         </div>
         <div className="mt-10 laptop:mt-30 p-2 laptop:p-0" ref={expRef}>
           <h1 className="text-2xl text-bold">Experiences</h1>
